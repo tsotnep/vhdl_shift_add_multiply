@@ -19,6 +19,9 @@ architecture RTL of tb_shift_add_mult is
 
 begin
 	top_level_mult_inst : entity work.top_level_mult
+	  generic map (
+			size => size
+		)
 		port map(
 			answer_out    => answer_out,
 			ans_ready_out => ans_ready_out,
@@ -37,7 +40,7 @@ begin
 		clk <= '1';
 		wait for period / 2;
 	end process clock_driver;
-	
+
 	stimul : process is
 	begin
 		wait for 5 ns;
@@ -48,12 +51,12 @@ begin
 		a_in <= "1111";
 		b_in <= "1111";
 		start_calc_in <= '1';
-		wait for 10 ns;		
+		wait for 10 ns;
 		start_calc_in <= '0';
-		
-		
+
+
 		wait for 100 ns;
 		wait;
 	end process stimul;
-	
+
 end architecture RTL;

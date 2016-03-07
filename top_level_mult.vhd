@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity top_level_mult is
 	generic(
-		size : integer := 4
+		size : integer
 	);
 	port(
 		answer_out    : out std_logic_vector(size * 2 - 1 downto 0);
@@ -51,4 +51,3 @@ begin
 	end process;
 
 end architecture RTL;
-
