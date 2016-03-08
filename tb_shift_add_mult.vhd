@@ -48,14 +48,21 @@ begin
 		start_calc_in <= '0';
 		wait for 10 ns;
 		rst <= '0';
+		
 		a_in <= "1111";
 		b_in <= "1111";
 		start_calc_in <= '1';
 		wait for 10 ns;
 		start_calc_in <= '0';
-
-
 		wait for 100 ns;
+		
+		a_in <= "1100";
+        b_in <= "0011";
+        start_calc_in <= '1';
+        wait for 10 ns;
+        start_calc_in <= '0';
+        wait for 100 ns;
+        
 		wait;
 	end process stimul;
 
