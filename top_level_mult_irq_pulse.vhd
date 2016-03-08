@@ -18,7 +18,6 @@ entity top_level_mult is
 end entity top_level_mult;
 
 architecture RTL of top_level_mult is
-	constant zero    : std_logic_vector(size - 1 downto 0)     := (others => '0');
 	signal ans_store : std_logic_vector(size * 2 - 1 downto 0) := (others => '0');
 	signal a_store   : std_logic_vector(size * 2 - 1 downto 0) := (others => '0');
 	signal b_store   : std_logic_vector(size - 1 downto 0)     := (others => '0');
@@ -45,7 +44,7 @@ begin
 			if b_store(0) = '1' then
 				ans_store <= std_logic_vector(unsigned(ans_store) + unsigned(a_store));
 			end if;
-			if b_store = zero and make_pulse = '1' then
+			if b_store = (b_store'range => '0') and make_pulse = '1' then
 				ans_rdy <= '1';
 				make_pulse <= '0';
 			end if;
