@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity top_level_mult is
+entity MULTIPLIERENTITY is
 	generic(
 		size : integer
 	);
@@ -15,9 +15,9 @@ entity top_level_mult is
 		clk           : in  std_logic;
 		rst           : in  std_logic
 	);
-end entity top_level_mult;
+end entity MULTIPLIERENTITY;
 
-architecture RTL of top_level_mult is
+architecture RTL of MULTIPLIERENTITY is
 	constant zero    : std_logic_vector(size - 1 downto 0)     := (others => '0');
 	signal ans_store : std_logic_vector(size * 2 - 1 downto 0) := (others => '0');
 	signal a_store   : std_logic_vector(size * 2 - 1 downto 0) := (others => '0');
@@ -34,7 +34,8 @@ begin
 			b_store   <= (others => '0');
 			ans_rdy   <= '1';
 		elsif start_calc_in = '1' then
-			ans_store(size - 1 downto 0) <= (others => '0');
+			ans_store                    <= (others => '0');
+			a_store(size*2-1 downto size)<= (others => '0');
 			a_store(size - 1 downto 0)   <= a_in;
 			b_store                      <= b_in;
 			ans_rdy                      <= '0';
