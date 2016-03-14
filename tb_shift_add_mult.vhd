@@ -16,6 +16,7 @@ architecture RTL of tb_shift_add_mult is
 	signal b_in          : std_logic_vector(size - 1 downto 0);
 	signal clk           : std_logic;
 	signal rst           : std_logic;
+    constant period : time := 10 ns;
 
 begin
 	top_level_mult_inst : entity work.MULTIPLIERENTITY
@@ -33,7 +34,6 @@ begin
 		);
 
 	clock_driver : process
-		constant period : time := 10 ns;
 	begin
 		clk <= '0';
 		wait for period / 2;
@@ -44,31 +44,32 @@ begin
 	stimul : process is
 	begin
 		wait for 5 ns;
-		rst <= '1';
+		rst <= '0';
 		start_calc_in <= '0';
 		wait for 10 ns;
-		rst <= '0';
+		rst <= '1';
 
 		a_in <= "1100";
         b_in <= "0011";
         start_calc_in <= '1';
-        wait for 10 ns;
+        wait for period;
         start_calc_in <= '0';
-        wait for 100 ns;
+        wait for period * 20;
 
 		a_in <= "1111";
         b_in <= "1111";
         start_calc_in <= '1';
-        wait for 10 ns;
+        wait for period;
         start_calc_in <= '0';
-        wait for 100 ns;
+        wait for period * 20;
+        
 
         a_in <= "1001";
         b_in <= "1101";
         start_calc_in <= '1';
-        wait for 10 ns;
+        wait for period * 10;
         start_calc_in <= '0';
-        wait for 100 ns;
+        wait for period * 10;
 
 		wait;
 	end process stimul;
