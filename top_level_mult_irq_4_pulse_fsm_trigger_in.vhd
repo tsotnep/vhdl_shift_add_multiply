@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
--- simulation: http://prnt.sc/afbkqo
+-- simulation: http://prnt.sc/afcsp3
 
 entity MULTIPLIERENTITY is
 	generic(
@@ -27,6 +27,7 @@ architecture RTL of MULTIPLIERENTITY is
 	signal a_store                   : std_logic_vector(size * 2 - 1 downto 0) := (others => '0');
 	signal b_store                   : std_logic_vector(size - 1 downto 0)     := (others => '0');
 	signal interrupt                 : std_logic_vector(3 downto 0)            := std_logic_vector(to_unsigned(irq_width, 4));
+	signal start_calc_trig           : std_logic                               := '0';
 begin
 	answer_out <= result when (current_state /= calculate_st) else (others => '0');
 	process(clk, rst)
@@ -39,7 +40,8 @@ begin
 				when wait_for_input_st =>
 					ans_ready_out <= '0';
 					interrupt     <= std_logic_vector(to_unsigned(irq_width, 4));
-					if start_calc_in = '1' then
+					start_calc_trig <= start_calc_in;
+					if start_calc_trig = '0' and start_calc_in = '1' then
 						next_state                     <= calculate_st;
 						a_store(size * 2 - 1 downto 0) <= (others => '0');
 						a_store(size - 1 downto 0)     <= a_in;

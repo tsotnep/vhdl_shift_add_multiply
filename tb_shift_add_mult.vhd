@@ -67,9 +67,15 @@ begin
         a_in <= "1001";
         b_in <= "1101";
         start_calc_in <= '1';
-        wait for period * 10;
+        wait for period * 20;
+        
+        a_in <= "1101";
+        b_in <= "1011";
+        wait for period * 5;
         start_calc_in <= '0';
-        wait for period * 10;
+        wait for period;
+        start_calc_in <= '1';
+        wait for period * 20;
 
 		wait;
 	end process stimul;
