@@ -10,8 +10,11 @@ note: when interrupt flag becomes '1', fsm is able to start calculation after 2 
 calculation times:
         lets assume bitwidth of input is SIZE=5
         after giving rising edge of start_calc_in:
-	        *5 clock cycles to finish calculation
+        
+	        *5 clock cycles to finish calculation (max)
+	        
 	        +1 clock cycle to set interrupt flag to '1'
+	        
 	
         *value provided on B_in input shifts to left, A_in shifts to right.
                 if B_in becomes 0 earlier than SIZE clock cycles then continuation of shifting does not make sense.
