@@ -6,6 +6,7 @@ steps on how to use:
 	3. after interrupt/ans_ready_out becomes '1' then you can immediately read answer
 	4. when interrupt flag is '1' it stays '1' until you do step n : 2
 
+note: output is (input size)*2
 note: when interrupt flag becomes '1', fsm is able to start calculation after 2 clock cycles (on simulation screen it's 3)
 
 calculation times:
@@ -18,8 +19,8 @@ calculation times:
 	        
 	
         *value provided on B_in input shifts to left, A_in shifts to right.
-                if B_in becomes 0 earlier than SIZE clock cycles then continuation of shifting does not make sense.
-                so, if that happens, it stops calculation.
+                if B_in becomes 0 earlier than SIZE clock cycles then it stops calculation
+                
                 example 1:
                         A_in = 11011, B_in = 00001, time of result: 1+1 clock cycle
                 example 2:
