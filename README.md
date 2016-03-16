@@ -8,20 +8,20 @@ steps on how to use:
 note: when interrupt flag becomes '1', fsm is able to start calculation after 2 clock cycles (on simulation screen it's 3)
 
 calculation times:
-	lets assume bitwidth of input is SIZE=5
-	after giving rising edge of start_calc_in:
-		*5 clock cycles to finish calculation
-		+1 clock cycle to set interrupt flag to '1'
-		
-	*value provided on B_in input shifts to left, A_in shifts to right.
-		if B_in becomes 0 earlier than SIZE clock cycles then continuation of shifting does not make sense.
-		so, if that happens, it stops calculation.
-		example 1:
-			A_in = 11011, B_in = 00001, time of result: 1+1 clock cycle
-		example 2:
-			A_in = 11011, B_in = 10001, time of result: 5+1 clock cycle
-		resume:
-			if calculation is time critical, try to provide smaller numbers on input B_in
+        lets assume bitwidth of input is SIZE=5
+        after giving rising edge of start_calc_in:
+	        *5 clock cycles to finish calculation
+	        +1 clock cycle to set interrupt flag to '1'
+	
+        *value provided on B_in input shifts to left, A_in shifts to right.
+                if B_in becomes 0 earlier than SIZE clock cycles then continuation of shifting does not make sense.
+                so, if that happens, it stops calculation.
+                example 1:
+                        A_in = 11011, B_in = 00001, time of result: 1+1 clock cycle
+                example 2:
+                        A_in = 11011, B_in = 10001, time of result: 5+1 clock cycle
+                resume:
+                        if calculation is time critical, try to provide smaller numbers on input B_in
 
 
 this diagram describes how FSM of multiplier works
