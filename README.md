@@ -7,10 +7,12 @@ steps on how to use:
 	4. when interrupt flag is '1' it stays '1' until you do step n : 2
 
 note: output is (input size)*2
+
 note: when interrupt flag becomes '1', fsm is able to start calculation after 2 clock cycles (on simulation screen it's 3)
 
 calculation times:
-        lets assume bitwidth of input is SIZE=5
+        lets assume bitwidth of input is SIZE=5.
+        
         after giving rising edge of start_calc_in:
         
 	        *5 clock cycles to finish calculation (max)
@@ -19,6 +21,7 @@ calculation times:
 	        
 	
         *value provided on B_in input shifts to left, A_in shifts to right.
+        
                 if B_in becomes 0 earlier than SIZE clock cycles then it stops calculation
                 
                 example 1:
