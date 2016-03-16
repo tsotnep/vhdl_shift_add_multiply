@@ -1,5 +1,6 @@
 This is a Multiplier, a shift-add-multiplier.
 steps on how to use:
+
 	1. provide inputs A_in, B_in
 	2. make rising edge of start_calc_in (...01...)
 	3. after interrupt/ans_ready_out becomes '1' then you can immediately read answer
