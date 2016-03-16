@@ -39,6 +39,12 @@ this diagram describes how FSM of multiplier works
 
 
 
-this is the fragment, of how simulation
+this is the fragment, of how simulation (next input is provided after 3 clock cycles from interrupt)
 ![SIM](http://i.imgur.com/i3f5Ita.png)
+
+
+this is the fragment, of how simulation (next input is provided after 2 clock cycles from interrupt). to view this simulation by yourself, comment line: 54 in testbench: tb_shift_add_mult.vhd
+![SIM](http://i.imgur.com/CNlW6yz.png)
+
+
 
